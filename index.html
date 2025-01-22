@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anjana Sankar | Portfolio</title>
     <style>
+        :root {
+            --primary: #87CEEB;
+            --secondary: #ADD8E6;
+            --accent: #B0E0E6;
+            --dark: #4682B4;
+            --light: #F0F8FF;
+            --glass: rgba(255, 255, 255, 0.15);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,275 +22,212 @@
         }
 
         body {
-            background-color: #faf7f7;
-            color: #333;
+            background: linear-gradient(135deg, var(--light), var(--secondary));
+            color: var(--dark);
             line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .glass-container {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            margin: 2rem;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 2rem;
         }
 
-        /* Header Styles */
         header {
-            background: linear-gradient(135deg, #ff8fb1, #b5179e);
+            background: linear-gradient(45deg, #87CEEB, #B0E0E6, #ADD8E6);
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glow {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            filter: blur(50px);
+        }
+
+        .hero {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
             color: white;
-            padding: 100px 0;
-            text-align: center;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
-        .profile-info h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
+        .subtitle {
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 2rem;
         }
 
-        .profile-info p {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
-
-        /* Navigation */
-        nav {
+        .about-me {
             background: white;
-            padding: 20px 0;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            line-height: 1.8;
         }
 
-        nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            gap: 30px;
+        .section {
+            padding: 4rem 0;
         }
 
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #b5179e;
-        }
-
-        /* Sections */
-        section {
-            padding: 60px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-            color: #b5179e;
-        }
-
-        /* About Section */
-        .about-content {
+        .skills-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .about-text {
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-        }
-
-        /* Experience Section */
-        .experience-card {
-            background: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .experience-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .experience-card h3 {
-            color: #b5179e;
-            margin-bottom: 10px;
-        }
-
-        /* Skills Section */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
         }
 
         .skill-card {
             background: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
         }
 
-        /* Footer */
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
         footer {
-            background: #333;
+            background: var(--dark);
             color: white;
             text-align: center;
-            padding: 20px 0;
-            margin-top: 40px;
+            padding: 2rem;
+            margin-top: 4rem;
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .floating {
+            animation: float 3s ease-in-out infinite;
         }
 
-        .animate {
-            animation: fadeIn 1s ease-out;
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            nav ul {
-                flex-direction: column;
-                text-align: center;
-                gap: 15px;
-            }
-
-            .profile-info h1 {
-                font-size: 2em;
-            }
+            h1 { font-size: 2.5rem; }
+            .container { padding: 0 1rem; }
         }
     </style>
 </head>
 <body>
-    <header class="animate">
-        <div class="container">
-            <div class="profile-info">
-                <h1>Anjana Sankar</h1>
-                <p>Web Developer | Content Writer | Host</p>
+    <header>
+        <div class="glow" style="top: 20%; left: 20%"></div>
+        <div class="glow" style="top: 60%; right: 20%"></div>
+        <div class="container hero">
+            <h1 class="floating">Hi, I'm Anjana ✨</h1>
+            <p class="subtitle">Developer | Content Writer | Event Host</p>
+            <div class="about-me">
+                <p>Hi! I'm a CS student at CUSAT with a passion for technology, writing, and bringing people together. I work with multiple programming languages and speak four human ones too (still learning more!).</p>
+                <p>As a former school topper, I love tackling new challenges. Currently, I'm balancing my studies while leading Women in Tech at Tinkerhub and managing content at SEDS. I've helped organize events like TinkHerHack 3.0 and Make-A-Ton.</p>
+                <p>I believe in making technology accessible and inclusive, while having fun along the way! Whether it's coding, writing, or hosting events, I bring enthusiasm and dedication to everything I do.</p>
             </div>
+            <a href="#contact" class="btn floating">Let's Connect ✨</a>
         </div>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    <section id="about" class="animate">
+    <section class="section">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Hello! I'm Anjana Sankar, a passionate web developer, content writer, and host. Currently pursuing Computer Science at CUSAT, I was a school topper at Bharatiya Vidya Bhavan.</p>
-                    <br>
-                    <p>I believe in the power of technology to create positive change and actively contribute to various tech communities and initiatives.</p>
-                </div>
-                <div class="about-text">
-                    <h3>Education</h3>
-                    <p>• Computer Science Student at CUSAT</p>
-                    <p>• School Topper at Bharatiya Vidya Bhavan</p>
+            <div class="glass-container">
+                <h2 style="text-align: center; margin-bottom: 2rem;">Skills & Expertise</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3>Programming</h3>
+                        <p>HTML, CSS, JavaScript, Java, Python, C++, C</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Languages</h3>
+                        <p>English, Hindi, French, Korean</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Leadership</h3>
+                        <p>Women in Tech Lead @ Tinkerhub<br>Content Head @ SEDS<br>Organizer @ Make-A-Ton</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="experience" class="animate">
-        <div class="container">
-            <h2 class="section-title">Leadership Roles</h2>
-            <div class="experience-card">
-                <h3>Make-A-Ton</h3>
-                <p>Organizer</p>
-            </div>
-            <div class="experience-card">
-                <h3>SEDS</h3>
-                <p>Content Head</p>
-            </div>
-            <div class="experience-card">
-                <h3>TEDxCusat</h3>
-                <p>Curation Team Member</p>
-            </div>
-            <div class="experience-card">
-                <h3>Tinkerhub</h3>
-                <p>Women in Tech Lead</p>
-            </div>
-            <div class="experience-card">
-                <h3>TinkHerHack 3.0</h3>
-                <p>Outreach Team Member</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="animate">
-        <div class="container">
-            <h2 class="section-title">Skills</h2>
-            <div class="skills-container">
-                <div class="skill-card">
-                    <h3>Web Development</h3>
-                    <p>HTML, CSS, JavaScript</p>
-                </div>
-                <div class="skill-card">
-                    <h3>Content Writing</h3>
-                    <p>Technical & Creative Writing</p>
-                </div>
-                <div class="skill-card">
-                    <h3>Event Management</h3>
-                    <p>Organization & Leadership</p>
-                </div>
+    <section id="contact" class="section">
+        <div class="container" style="text-align: center;">
+            <div class="glass-container">
+                <h2 style="margin-bottom: 2rem;">Get In Touch</h2>
+                <a href="mailto:anjanaksankar777@gmail.com" class="btn">anjanaksankar777@gmail.com</a>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="container">
-            <p>© 2025 Anjana Sankar. All rights reserved.</p>
-        </div>
+        <p>✨ Made with love by Anjana Sankar ✨</p>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+        // Add smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const section = document.querySelector(this.getAttribute('href'));
-                section.scrollIntoView({ behavior: 'smooth' });
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
 
-        // Animate sections on scroll
-        const observerOptions = {
-            threshold: 0.1
-        };
+        // Create random glowing orbs
+        function createGlowingOrbs() {
+            const header = document.querySelector('header');
+            for(let i = 0; i < 5; i++) {
+                const orb = document.createElement('div');
+                orb.className = 'glow';
+                orb.style.left = Math.random() * 100 + '%';
+                orb.style.top = Math.random() * 100 + '%';
+                header.appendChild(orb);
+            }
+        }
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('section').forEach((section) => {
-            observer.observe(section);
-        });
+        createGlowingOrbs();
     </script>
 </body>
 </html>
